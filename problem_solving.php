@@ -47,6 +47,7 @@ function printTriangle(int $rows=5){
     // Case1: value less than 2: no triangle will be visualizable. 
     if($rows<2){
         echo "Please enter at least '2' to visualize the triangle.";
+        return;
     }
     for ($i = 1; $i <= $rows; $i++) {
         // Printing spaces
@@ -61,7 +62,7 @@ function printTriangle(int $rows=5){
     }
 }
 
-printTriangle(0);
+printTriangle(6);
 
 
 /*
@@ -71,6 +72,24 @@ Sample input 1: 62343
 Sample output 1: 18
 */ 
 
-// function sum
+function digitSum(int $value){
+    
+    // Check if the input is a valid integer
+    if (!is_int($value)) {
+        echo"The input must be an integer.";
+    }
+    // Handle negative numbers by converting them to positive
+    $value = abs($value);
+    $sum = 0;
+    while($value>0){
+        $lastDigit = $value % 10;
+        $value = (int)($value/10);
+        $sum +=$lastDigit;
+    }
+    
+    return $sum;
+}
+
+print(digitSum(11290));
 
 ?>
