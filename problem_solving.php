@@ -29,6 +29,25 @@ The result should be: ‘I evol gnimmargorp’
 Here the order of the words is the same as the given sentence, but the order of the characters in the words is reversed. 
 */
 
+function reverseWords(string $sentence):string{
+
+    // Trim leading and trailing spaces
+    $sentence = trim($sentence);
+    
+    $reversedSentence=[];
+    $sentenceArray = explode(" ", $sentence);
+    for($i=0; $i<count($sentenceArray); $i++) {
+        $reversedWord = ""; 
+        for ($j=strlen($sentenceArray[$i])-1; $j >=0 ; $j--) { 
+            $reversedWord .= $sentenceArray[$i][$j];
+        }
+        $reversedSentence[] = $reversedWord;
+    }
+
+    return join(" ", $reversedSentence);
+}
+
+print(reverseWords("I love programming"));
 
 /*
 Problem 4:
@@ -62,7 +81,7 @@ function printTriangle(int $rows=5){
     }
 }
 
-printTriangle(6);
+// printTriangle(6);
 
 
 /*
@@ -90,6 +109,6 @@ function digitSum(int $value){
     return $sum;
 }
 
-print(digitSum(11290));
+// print(digitSum(11290));
 
 ?>
