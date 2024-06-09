@@ -7,7 +7,43 @@ Note: 'Absolute values' means the non-negative value without regard to its sign.
 */
 
 
+  
+function minAbsValue(string $integerList){
 
+    function arrayFilter($array, $callback){
+        $filteredArray=[];
+        foreach($array as $item){
+          if($callback($item)){
+            $filteredArray[] = (int)$item;
+          }
+        }
+        return $filteredArray;
+      }
+    // case1: eleminate elements other than integer.
+    $inputValues = explode(' ', $integerList);
+    $numbers = arrayFilter($inputValues, function($n){
+        return filter_var($n, FILTER_VALIDATE_INT) !== false;
+    });
+
+    print_r($numbers);
+
+    // case2: no value.
+    if(count($numbers)<1){
+        return null;
+    }
+    $minNum = $numbers[0];
+    foreach($numbers as $intNum){
+        if(abs($intNum)< $minNum){
+        $minNum = abs($intNum);
+        }
+    }
+
+    return $minNum;
+
+}
+
+
+print(minAbsValue("2 -1.q. 3 5"));
 
 
 /*
@@ -47,7 +83,7 @@ function reverseWords(string $sentence):string{
     return join(" ", $reversedSentence);
 }
 
-print(reverseWords("I love programming"));
+// print(reverseWords("I love programming"));
 
 /*
 Problem 4:
