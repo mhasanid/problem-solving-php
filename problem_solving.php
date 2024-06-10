@@ -25,9 +25,8 @@ function minAbsValue(string $integerList){
         return filter_var($n, FILTER_VALIDATE_INT) !== false;
     });
 
-    print_r($numbers);
 
-    // case2: no value.
+    // case2: handling no value.
     if(count($numbers)<1){
         return null;
     }
@@ -43,7 +42,9 @@ function minAbsValue(string $integerList){
 }
 
 
-print(minAbsValue("2 -1.q. 3 5"));
+echo "Minimum Abs value is: ". minAbsValue("2 -1.q. 3 5 -1");
+
+echo "\n";
 
 
 /*
@@ -54,8 +55,28 @@ Nunc ex lorem, ullamcorper ut eleifend ac, pellentesque non dolor.
 You need to output: 10
 */
 
+function wordCountFromFile($filename){
+    $word_counter = 0;
+    // Checking if the file exists
+    if (!file_exists($filename)) {
+        return "File not found.";
+    }
+    // Reading the contents of the file
+    $content = trim(file_get_contents($filename));
+    $words = preg_split('/[\s\p{P}]+/', $content);
 
+    foreach ($words as $word) {
+        if(strlen($word)>0){
+            $word_counter++;
+        }
+    }
 
+    return $word_counter;
+}
+
+echo "Word count in file: " . wordCountFromFile("text_file.txt");
+
+echo "\n";
 
 /*
 Problem 3:
@@ -83,7 +104,11 @@ function reverseWords(string $sentence):string{
     return join(" ", $reversedSentence);
 }
 
-// print(reverseWords("I love programming"));
+
+echo "Words Reversed:" . reverseWords("I love programming");
+
+echo "\n";
+
 
 /*
 Problem 4:
@@ -117,7 +142,7 @@ function printTriangle(int $rows=5){
     }
 }
 
-// printTriangle(6);
+printTriangle(6);
 
 
 /*
@@ -145,6 +170,6 @@ function digitSum(int $value){
     return $sum;
 }
 
-// print(digitSum(11290));
+echo "Sum of the digits: ". digitSum(11290);
 
 ?>
